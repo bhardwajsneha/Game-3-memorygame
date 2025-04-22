@@ -1,0 +1,98 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #d89090;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.stats {
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);  /* 4 columns */
+    grid-template-rows: repeat(4, 100px);  /* 4 rows */
+    gap: 10px;
+    justify-content: center;
+    width: 450px; /* Adjust to fit 4 cards of 100px each with gap */
+    height: 450px; /* Adjust to fit 4 rows */
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc; /* Default background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background-color 0.3s;
+    text-align: center;
+    position: relative;
+    transform-style: preserve-3d; /* To enable the 3D flip effect */
+}
+
+/* The flip effect */
+.card.flipped {
+    background-color: #fff;
+    transform: rotateY(180deg); /* Flip the card */
+}
+
+/* Hide the image before flipping */
+.card span {
+    position: absolute;
+    backface-visibility: hidden; /* Hide the image when the card is not flipped */
+    font-size: 2rem;
+    color: transparent; /* Initially, hide the image */
+    opacity: 0; /* Make image invisible initially */
+    transition: opacity 0.3s; /* Smooth transition for revealing the image */
+}
+
+/* Reveal the image after flip */
+.card.flipped span {
+    color: black; /* Show the image */
+    opacity: 1; /* Make the image visible */
+    backface-visibility: visible; /* Allow visibility after flip */
+}
+
+
+/* Matched Card */
+.card.matched {
+    background-color: #28a745; /* Green for matched */
+    color: white;
+    transform: scale(1.1); /* Slightly enlarge on match */
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Restart button */
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#restart:hover {
+    background-color: #0056b3;
+}
